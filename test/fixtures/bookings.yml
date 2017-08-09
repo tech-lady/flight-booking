@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  booking_reference: MyString
+  booking_fee: 9.99
+  passenger_email: MyString
+
+two:
+  booking_reference: MyString
+  booking_fee: 9.99
+  passenger_email: MyString
