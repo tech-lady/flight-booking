@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user
-    raise(ExceptionHandler::Unauthenticated, 'Not Authenticated') if session[:user_id].nil?
+    raise(ExceptionHandler::Unauthenticated, "Not Authenticated") if session[:user_id].nil?
     @current_user = User.find(session[:user_id])
   end
 end

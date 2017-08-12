@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_secure_password
+
   has_many :bookings, foreign_key: "users_id"
 
   validates :first_name,

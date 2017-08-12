@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user, only: [:new, :create]
+  skip_before_action :authenticate_user, only: %i(new create)
 
   def index
     @user = User.all
   end
-
 
   def new
     @user = User.new
@@ -18,14 +17,14 @@ class UsersController < ApplicationController
     else
       flash[:alert] = @user.errors.full_messages[0]
     end
-    render :show
+
+    redirect_to root_path
   end
 
-  def show
-
-  end
+  def show; end
 
   private
+
   def users_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirm)
   end

@@ -1,0 +1,29 @@
+<section id="main-view" data-speed="6" data-type="background">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-sm-12 pull-right well">
+        <div class="page-header">
+        <h3 class="text-center">Sign in</h3>
+          <div class="form">
+            <%= form_for(User.new, :html => {:id => "sign_in_user"}, url: session_index_path) do |f| %>
+            
+              <p>
+                <%= f.label :email %><br>
+                <%= f.text_field :email, class: "form-control", required: "true" %>
+              </p>
+
+              <p>
+                <%= f.label :password %><br>
+                <%= f.password_field :password, class: "form-control", required: "true" %>
+              </p>
+
+              <p>
+                <%= f.submit 'Sign In', class: "btn btn-primary" %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

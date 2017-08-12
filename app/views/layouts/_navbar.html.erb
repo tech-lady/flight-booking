@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>FlyApp</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-<div class="jumbotron">
-  <body>
-    <nav class="nnavbar navbar-toggleable-md navbar-light bg-faded">Fly-app</a>
-        <ul id="" class="">
-          <li><%= link_to "Signup", new_user_path %></li>
-          <li><%= link_to "Signin", users_path %></li>
-          <li><a href="#" class="btn">Booking</a></li>
-          <% if @current_user %>
-            <li> <%= link_to "Sign Out", session_path, class: "btn btn-primary", method: :delete %></li>
-          <% end %>
-        </ul>
-      </div>
-    </nav> 
+<nav class="navbar navbar-default">
+<%= link_to "Fly-app", root_path, class: "navbar-brand" %>
+<div class="collapse navbar-collapse" id="navbarText">
+  <ul class="nav navbar-nav navbar-right">
+    <% if @current_user %>
+      <li><a href="#">Bookings</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <%= "#{@current_user[:first_name]} #{@current_user[:last_name]}" %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+           <%= link_to "Sign Out", session_path, method: :delete, class: "dropdown-item" %>         
+        </div>
+      </li>
+    <% else %>
+      <li><%= link_to "Sign up", new_user_path, class: "active" %></li>
+      <li><%= link_to "Sign in", new_session_path %></li>
+    <% end %>
+  </ul>
+  </div>
+</nav>

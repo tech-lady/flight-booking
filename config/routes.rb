@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  root 'flight#index'
+  root "home#index"
 
   resources :users
   resources :booking
-  resources :flights
+  resources :flight
 
   delete "/session", to: "session#destroy"
-  post "/session", to: "session#create"
+  resources :session, only: [:create, :new,]
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
