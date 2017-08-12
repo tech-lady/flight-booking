@@ -20,9 +20,5 @@ RSpec.describe Flight, type: :model do
     it "belongs to a aircraft" do
       expect(flight).to belong_to(:aircraft)
     end
-
-    it "belongs to a route" do
-      expect(flight).to belong_to(:route)
-    end
   end
 end

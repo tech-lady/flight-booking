@@ -13,19 +13,15 @@ RSpec.describe Airport, type: :model do
     end
   end
 
-  describe "associations" do
-    it "has many departure routes" do
-      expect(airport).to have_many(:departure_routes)
-    end
-
-    it "has many arrival routes" do
-      expect(airport).to have_many(:arrival_routes)
+  describe "#iata_name" do
+    it "returns a city and iata code" do
+      expect(airport.iata_code).to eql("NG")
     end
   end
-
-  describe "#iata_name" do
-    it "returns a city and iata name" do
-      expect(airport.iata_name).to eql("Abuja (ABV)")
+  
+  describe "associations" do
+    it "has many flights" do
+      expect(airport).to have_many(:flights)
     end
   end
 end
