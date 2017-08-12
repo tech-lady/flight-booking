@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170812155611) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "aircrafts", force: :cascade do |t|
     t.string "tail_number"
     t.integer "first_class_capacity"

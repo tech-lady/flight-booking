@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FlyApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+<div class="jumbotron">
+  <body>
+    <nav class="nnavbar navbar-toggleable-md navbar-light bg-faded">Fly-app</a>
+        <ul id="" class="">
+          <li><%= link_to "Signup", new_user_path %></li>
+          <li><%= link_to "Signin", users_path %></li>
+          <li><a href="#" class="btn">Booking</a></li>
+          <% if @current_user %>
+            <li> <%= link_to "Sign Out", session_path, class: "btn btn-primary", method: :delete %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav> 
