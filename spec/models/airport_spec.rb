@@ -18,7 +18,7 @@ RSpec.describe Airport, type: :model do
       expect(airport.iata_code).to eql("NG")
     end
   end
-  
+
   describe "associations" do
     it "has many flights" do
       expect(airport).to have_many(:flights)
