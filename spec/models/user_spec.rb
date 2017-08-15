@@ -11,12 +11,12 @@ RSpec.describe User, type: :model do
     it { expect(user).to respond_to(:first_name) }
     it { expect(user).to respond_to(:last_name) }
     it { expect(user).to respond_to(:email) }
-    it { expect(user).to respond_to(:password) }
+    it { expect(user).to respond_to(:password_digest) }
   end
 
   describe "Activemodel Validations" do
     it "validates length of password" do
-      expect(user).to validate_length_of(:password)
+      expect(user).to validate_length_of(:password_digest)
     end
 
     it "validates presence of first name" do

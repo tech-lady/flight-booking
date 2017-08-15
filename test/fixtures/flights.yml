@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  arrival_date: 2017-08-08 12:51:50
-  departure_date: 2017-08-08 12:51:50
-
-two:
-  arrival_date: 2017-08-08 12:51:50
-  departure_date: 2017-08-08 12:51:50

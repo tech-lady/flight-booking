@@ -32,6 +32,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
+gem 'pg'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,6 +47,8 @@ group :development, :test do
   gem 'factory_girl_rails', '>=  4.7'
   gem 'shoulda-matchers', '>= 3.1.2'
   gem 'bcrypt'
+  gem 'coveralls', require: false
+  gem 'pry'
 end
 
 group :development do
