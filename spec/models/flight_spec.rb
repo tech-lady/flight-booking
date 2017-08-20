@@ -7,7 +7,6 @@ RSpec.describe Flight, type: :model do
 
   describe "instance methods" do
     context "respond to instance method calls" do
-      it { expect(flight).to respond_to(:arrival_date) }
       it { expect(flight).to respond_to(:departure_date) }
     end
   end
@@ -15,10 +14,6 @@ RSpec.describe Flight, type: :model do
   describe "associations" do
     it "has many bookings" do
       expect(flight).to have_many(:bookings)
-    end
-
-    it "belongs to a aircraft" do
-      expect(flight).to belong_to(:aircraft)
     end
   end
 end

@@ -1,17 +1,23 @@
 class ApplicationController < ActionController::Base
-  include ExceptionHandler
+  extend ExceptionHandler
   include SessionHelper
 
   before_action :authenticate_user
 
   protect_from_forgery with: :exception
 
-  attr_reader :current
+  attr_reader :current_user
 
   private
 
   def authenticate_user
-    raise(ExceptionHandler::Unauthenticated, "Not Authenticated") if session[:user_id].nil?
-    @current_user = User.find(session[:user_id])
+    @current_user = User.find(session[:user_id]) unless session[:user_id].nil?
+  end
+
+  def authenticate_admin
+    unless current_user.admin?
+      flash[:notice] = "Access denied"
+      redirect_to root_path
+    end
   end
 end

@@ -11,11 +11,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(users_params)
-    if @user.save
-      sign_in @user
+    if users_params[:password] != users_params[:confirm_password]
+      flash[:alert] = "Password does not match"
     else
-      flash[:alert] = @user.errors.full_messages[0]
+      @user = User.create(users_params)
+      if @user.save
+        sign_in @user
+      else
+        flash[:alert] = @user.errors.full_messages[0]
+      end
     end
 
     redirect_to root_path
@@ -26,6 +30,7 @@ class UsersController < ApplicationController
   private
 
   def users_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirm)
+    params.require(:user).
+      permit(:first_name, :last_name, :email, :password, :confirm_password)
   end
 end

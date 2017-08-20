@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   root "home#index"
 
+  get "flights" => "flights#index"
+  post "flights/search" => "flights#search"
+
   resources :users
   resources :booking
-  resources :flight
+  resources :flights
+  resources :airport
+  resources :passenger
 
   delete "/session", to: "session#destroy"
   resources :session, only: [:create, :new,]
