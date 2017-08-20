@@ -1,20 +1,21 @@
-require "rails_helper"
+# frozen_string_literal: true
+require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   let :new_user do
     {
-      first_name: "Someone",
-      last_name: "Special",
-      email: "someone@yahoo.com",
-      password: "password",
-      password_confirmation: "password"
+      first_name: 'Yems',
+      last_name: 'Kems',
+      email: 'someone@yahoo.com',
+      password: 'Hello',
+      password_confirmation: 'hello'
     }
   end
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(302)
+  describe 'POST #create' do
+    it 'redirects to signed in page' do
+      post(:create, params: { user: new_user })
+      expect(controller).to respond_with(302)
     end
   end
 end
