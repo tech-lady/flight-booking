@@ -1,0 +1,21 @@
+<%= form_for @flight do |f| %>
+  <% if @flight.errors.any? %>
+  <ul>
+    <% @flight.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <%= f.select :origin_id, Airport.all.collect { |a| [a.name, a.id] }, { class: "form-control  transparent-input", required: true } %>
+
+  <%= f.select :destination_id, Airport.all.collect { |a| [a.name, a.id] }, { class: "form-control  transparent-input", required: true } %>
+
+  <%= f.number_field :available_seats %>
+
+  <%= f.date_field :departure_date %>
+
+    <%= f.select :airport_id, Airport.all.collect { |a| [a.name, a.id] }, { class: "form-control  transparent-input", required: true } %>
+
+  <%= f.submit %>
+<% end %>

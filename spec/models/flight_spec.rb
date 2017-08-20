@@ -15,6 +15,5 @@ RSpec.describe Flight, type: :model do
     it "has many bookings" do
       expect(flight).to have_many(:bookings)
     end
-
   end
 end

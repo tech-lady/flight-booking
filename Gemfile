@@ -35,6 +35,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'pg'
+gem 'validates_email_format_of'
+gem 'faker', '>= 1.6.3'
+gem 'bootstrap-datepicker-rails', '>= 1.6.4.1'
+gem 'toastr-rails', '>= 1.0.3'
+gem 'rails-controller-testing'
 
 
 group :development, :test do
