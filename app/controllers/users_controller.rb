@@ -1,28 +1,24 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user, only: %i(new create)
 
-  def index
-    @user = User.all
-  end
-
   def new
     @user = User.new
-    render :index
   end
 
   def create
+    @user = User.new(users_params)
     if users_params[:password] != users_params[:confirm_password]
       flash[:alert] = "Password does not match"
-    else
-      @user = User.create(users_params)
-      if @user.save
-        sign_in @user
-      else
-        flash[:alert] = @user.errors.full_messages[0]
-      end
+      return render :new
     end
-
-    redirect_to root_path
+    if @user.save
+      flash[:notice] = "Signed up successfully"
+      sign_in @user
+      redirect_to root_path
+    else
+      flash[:alert] = @user.errors.full_messages[0]
+      render :new
+    end
   end
 
   def show; end

@@ -7,21 +7,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
   <%= render 'layouts/navbar' %>
-  <% if flash[:notice]%>
-    <div class="alert alert-success" role="alert">
-       <%= flash[:notice] %>
-    </div>
-  <% end %>
-  
-  <% if flash[:alert] %>
-    <div class="alert alert-danger" role="alert">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
-  
+  <%= bootstrap_flash %>
   <%= yield %>
 
   </body>

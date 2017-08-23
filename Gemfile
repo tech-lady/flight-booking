@@ -8,8 +8,6 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -34,12 +32,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
-gem 'pg'
 gem 'validates_email_format_of'
-gem 'faker', '>= 1.6.3'
 gem 'bootstrap-datepicker-rails', '>= 1.6.4.1'
 gem 'toastr-rails', '>= 1.0.3'
-gem 'rails-controller-testing'
+gem 'bcrypt'
 
 
 group :development, :test do
@@ -51,7 +47,8 @@ group :development, :test do
   gem 'rspec-rails', '>= 3.4.2'
   gem 'factory_girl_rails', '>=  4.7'
   gem 'shoulda-matchers', '>= 3.1.2'
-  gem 'bcrypt'
+  gem 'faker', '>= 1.6.3'
+  gem 'rails-controller-testing'
   gem 'coveralls', require: false
   gem 'pry'
 end
@@ -67,3 +64,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :production do
+  gem 'pg'
+end

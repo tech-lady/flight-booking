@@ -8,13 +8,12 @@ class Flight < ApplicationRecord
   has_many :bookings
   validates :origin, presence: true
   validates :destination, presence: true
-  validates :airport_id, presence: true
   validates :departure_date, presence: true
   validate :unique_origin_and_destination
 
   def self.open_flights
     current_time = DateTime.tomorrow
-    where("departure_date <= ?", current_time).sort_by_departure_date
+    where("departure_date >= ?", current_time).sort_by_departure_date
   end
 
   def self.search(params)

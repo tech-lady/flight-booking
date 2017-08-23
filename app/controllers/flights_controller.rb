@@ -23,7 +23,8 @@ class FlightsController < ApplicationController
   end
 
   def search
-    @flights = Flight.search(search_params)
+    @flights = Flight.open_flights.search(search_params)
+    @number_of_passengers = search_params[:number_of_passengers]
   end
 
   def edit; end
@@ -38,15 +39,12 @@ class FlightsController < ApplicationController
     end
   end
 
-  # def delete
-  # end
-
   private
 
   def flight_params
     params.require(:flight).
       permit(:origin_id, :destination_id, :airport_id,
-             :available_seats, :departure_date)
+             :available_seats, :departure_date, :aircraft_id)
   end
 
   def search_params

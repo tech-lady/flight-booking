@@ -2,8 +2,11 @@
 <%= link_to "Fly-app", root_path, class: "navbar-brand" %>
 <div class="collapse navbar-collapse" id="navbarText">
   <ul class="nav navbar-nav navbar-right">
+  <% if @current_user && @current_user.admin %>
+    <li><%= link_to "Create Flights", new_flight_path %></li>
+  <% end %>
     <% if @current_user %>
-      <li><a href="#">Bookings</a></li>
+      <li><%= link_to "Bookings", bookings_path %></li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <%= "#{@current_user[:first_name]} #{@current_user[:last_name]}" %>
