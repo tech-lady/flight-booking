@@ -40,3 +40,13 @@ body {
   font-family: "Times New Roman", Times, serif;
   font-style: italic;
 }
+
+.notice {
+  position: relative;
+  left: 21rem;
+  top: 10rem;
+  display: none;
+  p {
+    font-weight: bold;
+  }
+}

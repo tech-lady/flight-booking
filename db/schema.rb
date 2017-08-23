@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820155820) do
+ActiveRecord::Schema.define(version: 20170820230714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170820155820) do
     t.string "iata_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "state_id"
+    t.bigint "state_id"
     t.index ["state_id"], name: "index_airports_on_state_id"
   end
 
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20170820155820) do
     t.string "passenger_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "users_id"
-    t.integer "flight_id"
+    t.bigint "users_id"
+    t.bigint "flight_id"
     t.index ["flight_id"], name: "index_bookings_on_flight_id"
     t.index ["users_id"], name: "index_bookings_on_users_id"
   end
@@ -59,14 +59,27 @@ ActiveRecord::Schema.define(version: 20170820155820) do
 
   create_table "flights", force: :cascade do |t|
     t.datetime "departure_date"
+    t.integer "state_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "airport_id"
+    t.bigint "aircraft_id"
+    t.bigint "airport_id"
     t.integer "available_seats"
     t.integer "origin_id"
     t.integer "destination_id"
-    t.integer "aircraft_id"
+    t.index ["aircraft_id"], name: "index_flights_on_aircraft_id"
     t.index ["airport_id"], name: "index_flights_on_airport_id"
+  end
+
+  create_table "passengers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone_number"
+    t.integer "age"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_passengers_on_booking_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -75,18 +88,15 @@ ActiveRecord::Schema.define(version: 20170820155820) do
     t.string "payment_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "booking_id"
+    t.bigint "booking_id"
     t.index ["booking_id"], name: "index_payments_on_booking_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "states", force: :cascade do |t|
     t.string "name"
+    t.integer "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "country_id"
-    t.index ["country_id"], name: "index_states_on_country_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,6 +111,13 @@ ActiveRecord::Schema.define(version: 20170820155820) do
     t.boolean "admin", default: false
   end
 
+  add_foreign_key "airports", "states"
+  add_foreign_key "bookings", "flights"
+  add_foreign_key "bookings", "users", column: "users_id"
+  add_foreign_key "flights", "aircrafts"
+  add_foreign_key "flights", "airports"
   add_foreign_key "flights", "airports", column: "destination_id"
   add_foreign_key "flights", "airports", column: "origin_id"
+  add_foreign_key "passengers", "bookings"
+  add_foreign_key "payments", "bookings"
 end
