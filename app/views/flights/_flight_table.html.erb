@@ -1,4 +1,5 @@
 <div class="flight-table-div">
+  <%= form_for :flight_booking, url: new_booking_path, method: :get do |f| %>
   <table class="table">
     <thead>
       <tr>
@@ -10,7 +11,11 @@
       </tr>
     </thead>
     <tbody>
-      <%= render flights %>
+      <%= f.hidden_field :number_of_passengers, value: params[:number_of_passengers] %>
+      <%= render flights, f: f %>
+
+      <%= f.submit "Book Flight", class: "btn btn-default", id: "book-fly" %>
     </tbody>
   </table>
+  <% end %>
 </div>

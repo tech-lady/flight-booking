@@ -15,9 +15,16 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin
-    unless current_user.admin?
-      flash[:notice] = "Access denied"
+    unless current_user && current_user.admin?
+      flash[:alert] = "Access denied"
       redirect_to root_path
+    end
+  end
+
+  def check_user_login
+    unless signed_in?
+      flash[:alert] = "Sign in to continue"
+      redirect_to new_session_path
     end
   end
 end

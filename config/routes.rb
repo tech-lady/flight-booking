@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post "flights/search" => "flights#search"
 
   resources :users
-  resources :booking
+  resources :bookings
   resources :flights
   resources :airport
   resources :passenger

@@ -16,7 +16,7 @@ RSpec.describe UsersController, type: :controller do
   describe "POST #create" do
     it "redirects to signed in page" do
       post(:create, params: { user: new_user })
-      expect(controller).to respond_with(302)
+      expect(controller).to respond_with(200)
     end
   end
 end

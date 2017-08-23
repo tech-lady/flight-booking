@@ -6,4 +6,7 @@ FactoryGirl.define do
     passenger_email "passenger@gmail.com"
     users_id "2"
   end
+  trait :registered_user__flight_booking do
+    user
+  end
 end
