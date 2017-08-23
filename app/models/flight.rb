@@ -17,11 +17,13 @@ class Flight < ApplicationRecord
   end
 
   def self.search(params)
-    where(origin_id: params["origin"],
-          destination_id: params["destination"],
-          departure_date: params["departure_date"]).
+    result = where(origin_id: params["origin"],
+          destination_id: params["destination"]).
       where("available_seats >= ?", params["number_of_passengers"]).
       order(departure_date: "desc")
+
+    return result.where(departure_date: params["departure_date"]) if params[:departure_date].present?
+    result
   end
 
   def self.sort_by_departure_date

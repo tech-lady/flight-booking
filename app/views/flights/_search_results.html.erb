@@ -5,7 +5,7 @@
     <% else %>
       <h2 class="text-info"><small>Search results for flights from</small>
         <%= @flights.first.origin.name %> <small>to</small> <%= @flights.first.destination.name %>
-        <small>starting from</small> <%= DateTime.parse(params[:departure_date]).strftime("%b %d, %Y") %>
+        <small>starting from</small> <%= @flights.first.departure_date.strftime("%b %d, %Y") %>
       </h2>
       <hr>
       <%= render 'flight_table', flights: @flights %>

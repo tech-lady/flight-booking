@@ -8,15 +8,15 @@ RSpec.describe UsersController, type: :controller do
       first_name: "Yems",
       last_name: "Kems",
       email: "someone@yahoo.com",
-      password: "Hello",
-      password_confirmation: "hello"
+      password: "hello",
+      confirm_password: "hello"
     }
   end
 
   describe "POST #create" do
     it "redirects to signed in page" do
       post(:create, params: { user: new_user })
-      expect(controller).to respond_with(200)
+      expect(controller).to respond_with(302)
     end
   end
 end

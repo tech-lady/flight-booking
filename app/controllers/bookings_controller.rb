@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :check_user_login, only: %i(index)
   before_action :set_booking, only: %i(show edit update destroy)
-  before_action :check_user_login, only: %i(index new)
 
   def index
     @bookings = if @current_user.admin
@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     end
     @number_of_passengers = params[:flight_booking][:number_of_passengers].to_i
     @flight = Flight.find(params[:flight_booking][:flight_id])
-    @booking = current_user.bookings.build(flight: @flight)
+    @booking = current_user ? current_user.bookings.build(flight: @flight) : Booking.new(flight: @flight)
     @number_of_passengers.times do
       @booking.passengers << Passenger.new
     end
@@ -26,9 +26,12 @@ class BookingsController < ApplicationController
   def show; end
 
   def create
-    @booking = current_user.bookings.build(booking_params)
+    @booking = current_user ? current_user.bookings.build(booking_params) : Booking.new(booking_params)
     if @booking.save
       flash[:notice] = "Flight booked!"
+      email = current_user ? current_user.email : @booking.passenger_email
+      current_user ? session.delete(:anonymous_email) : session[:anonymous_email] = email
+      UserMailer.confirm_email(email).deliver
       redirect_to @booking
     else
       @number_of_passengers = params[:number_of_passengers].to_i
@@ -36,15 +39,22 @@ class BookingsController < ApplicationController
     end
   end
 
+  private
+
   def booking_params
     params.require(:booking).
       permit(:flight_id,
-             :booking_reference,
              :passenger_email,
              passengers_attributes: %i(name email phone_number age))
   end
 
   def set_booking
-    @booking = Booking.find(params[:id])
+    @booking = if current_user && current_user.admin
+                Booking.find(params[:id])
+               else
+                 current_user ?
+                  current_user.bookings.find(params[:id]) :
+                  Booking.where(id: params[:id]).where(passenger_email: session[:anonymous_email])
+               end
   end
 end

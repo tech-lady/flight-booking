@@ -5,7 +5,11 @@
         <div class = "col-md-12">
           <div class="panel-body" align ="center">
             <h2 class="text-center header">Bookings</h2>
+            <% if @bookings.empty? %>
+              <h3 class="header">Oops! No bookings yet</h3>
+            <% else %>
               <%= render @bookings %>
+            <% end %>
           </div>
         </div>
       </div>

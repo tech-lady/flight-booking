@@ -1,6 +1,5 @@
 class FlightsController < ApplicationController
-  # skip_before_action :authenticate_user, only: :index
-  before_action :set_flights, only: %i(show update edit)
+  before_action :set_flight, only: %i(show update edit)
   before_action :authenticate_admin, only: %i(new create)
 
   def index
@@ -51,7 +50,7 @@ class FlightsController < ApplicationController
     params.permit(:origin, :destination, :number_of_passengers, :departure_date)
   end
 
-  def set_flights
+  def set_flight
     @flight = Flight.find(params[:id])
   end
 end

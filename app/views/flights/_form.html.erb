@@ -1,5 +1,4 @@
-
-<%= form_for @flight, :html => {:class => "flight"} do |f| %>
+<%= form_for @flight, :html => { class: "flight" } do |f| %>
   <% if @flight.errors.any? %>
   <ul>
     <% @flight.errors.full_messages.each do |msg| %>
