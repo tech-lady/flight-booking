@@ -1,5 +1,5 @@
-# SQLite version 3.x
-#   gem install sqlite3
+# Postgresql version 3.x
+#   gem install pg
 #
 #   Ensure the pg gem is defined in your Gemfile
 #   gem 'pg'

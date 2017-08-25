@@ -36,6 +36,7 @@ gem 'validates_email_format_of'
 gem 'bootstrap-datepicker-rails', '>= 1.6.4.1'
 gem 'toastr-rails', '>= 1.0.3'
 gem 'bcrypt'
+gem 'pg'
 
 
 group :development, :test do
@@ -66,5 +67,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-  gem 'pg'
 end
