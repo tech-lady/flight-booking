@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+  get 'airport/index'
+
   root "home#index"
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   get "flights" => "flights#index"
   post "flights/search" => "flights#search"
 
+  reources :airports
   resources :users
   resources :bookings
   resources :flights
