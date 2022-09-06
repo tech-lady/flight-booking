@@ -1,5 +1,5 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :state do
-    name "Abuja"
+    name { "Abuja" }
   end
 end
