@@ -1,0 +1,34 @@
+<%= form_for @flight, :html => { class: "flight" } do |f| %>
+  <% if @flight.errors.any? %>
+  <ul>
+    <% @flight.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <div class = "form-group">
+    <p> <%= f.label :aircraft_id %><p>
+    <%= f.select :aircraft_id, Aircraft.all.collect { |a| [a.name, a.id] }, {}, { class: "form-control  transparent-input", required: true } %>
+  </div>
+  <div class = "form-group">
+    <p> <%= f.label :origin_id %><p>
+    <%= f.select :origin_id, Airport.all.collect { |a| [a.name, a.id] }, {}, { class: "form-control  transparent-input", required: true } %>
+  </div>
+  <div class = "form-group">
+    <p> <%= f.label :destination_id %><p>
+    <%= f.select :destination_id, Airport.all.collect { |a| [a.name, a.id] }, {}, { class: "form-control  transparent-input", required: true } %>
+  </div>
+  <div class = "form-group">
+    <p> <%= f.label :available_seats %><p>
+    <%= f.number_field :available_seats, class: "form-control  transparent-input", required: true %>
+  </div>
+  <div class = "form-group">
+    <p> <%= f.label :departure_date %><p>
+    <%= f.date_field :departure_date, class: "form-control  transparent-input", required: true %>
+  <div class="row">
+      <div class="form-actions">
+          <%= f.submit class: "btn btn-default btn-set" %>
+      </div>
+    </div>
+<% end %>
+

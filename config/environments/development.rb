@@ -29,6 +29,20 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.delivery_method = :letter_opener_web
+
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.gmail.com",
+  #   port: 587,
+  #   domain: "http://localhost:4000",
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: "olayemifolakemi@gmail.com",
+  #   password: "helloJbaby"
+  # }
+
+  config.action_mailer.default_url_options = { :host => 'localhost:4000' }
+  
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.

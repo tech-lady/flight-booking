@@ -1,0 +1,8 @@
+<tr>
+  <td><%= flight.aircraft.try(:name) %></td>
+  <td><%= flight.aircraft.try(:tail_number) %></td>
+  <td><%= flight.origin.try(:name) %>, <%= flight.origin.try(:city) %></td>
+  <td><%= flight.destination.try(:name) %>, <%= flight.destination.try(:city) %></td>
+  <td><%= flight.departure_date %> 
+  <%= f.radio_button :flight_id, flight.id, class: "flight-radio" %>
+</tr>

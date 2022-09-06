@@ -21,3 +21,10 @@
 /yarn-error.log
 
 .byebug_history
+
+.rubocop.yml
+.coveralls.yml
+.codeclimate.yml
+.hound.yml
+/vendor
+

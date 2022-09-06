@@ -1,0 +1,17 @@
+<div class="home-result">
+  <div class="panel-body" align ="center">
+    <% if @flights.empty? %>
+      <h4 class="text-info">No available flights for the location specified</h4>
+    <% else %>
+      <h2 class="text-info"><small>Search results for flights from</small>
+        <%= @flights.first.origin.name %> <small>to</small> <%= @flights.first.destination.name %>
+        <small>starting from</small> <%= @flights.first.departure_date.strftime("%b %d, %Y") %>
+      </h2>
+      <hr>
+      <%= render 'flight_table', flights: @flights %>
+    <% end %>
+    <br>
+    <%= link_to 'All Flights', flights_path, class: "btn btn-primary pull-right"%>
+    <%= link_to 'Exit', :back, class: "btn btn-danger pull-left"%>
+  </div>
+</div>

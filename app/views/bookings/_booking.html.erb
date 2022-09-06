@@ -1,0 +1,29 @@
+<% if booking.passengers.present? %>
+  <div class="booking-table-div">
+  <p>Reference Number: <%= booking.id %></p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Aircraft Name</th>
+          <th>Tail Number</th>
+          <th>Origin Airport</th>
+          <th>Destination</th>
+          <th>Flight Date </th>
+          <th>Passenger(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% booking.passengers.each do |pass| %>
+          <tr>
+            <td><%= booking.flight.aircraft.try(:name) %></td>
+            <td><%= booking.flight.aircraft.try(:tail_number) %></td>
+            <td><%= booking.flight.origin.try(:name) %>, <%= booking.flight.origin.try(:city) %></td>
+            <td><%= booking.flight.destination.try(:name) %>, <%= booking.flight.destination.try(:city) %></td>
+            <td><%= booking.flight.departure_date %> 
+            <td><%= pass.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
