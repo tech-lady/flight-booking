@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "flights" => "flights#index"
   post "flights/search" => "flights#search"
 
-  reources :airports
+  resources :airports
   resources :users
   resources :bookings
   resources :flights
