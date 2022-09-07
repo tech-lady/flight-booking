@@ -28,3 +28,4 @@
 .hound.yml
 /vendor
 
+.DS_Store
