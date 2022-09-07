@@ -22,7 +22,8 @@ This project is implemented using the ruby on rails framework and as such in ord
 
 ### Flights
 
-![Alt text](/image/avail_flights.png?raw=true "Book your flights here")
+<img width="1778" alt="avail_flights" src="https://user-images.githubusercontent.com/106281319/188972805-bd175d77-2a99-482f-b27d-03d0204dc6ae.png">
+
 
 You also need to make sure that you have Rubygems and Bundler installed. RubyGems is a package management framework for Ruby and bundler is a ruby gem that helps to manage other external dependencies in a rails application.
 
@@ -59,7 +60,8 @@ rails server
 
 ### Page displaying flights for booking
 
-![Alt text](/image/book_flights.png?raw=true "Book your flights here")
+<img width="1780" alt="book_flights" src="https://user-images.githubusercontent.com/106281319/188973096-234a9ebf-b835-431d-a20d-63c4b7c24926.png">
+
 
 ## Running the tests.
 
