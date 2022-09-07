@@ -4,9 +4,11 @@
 [![Coverage Status](https://coveralls.io/repos/github/andela-oawofadeju/fly-app/badge.svg?branch=develop)](https://coveralls.io/github/andela-oawofadeju/fly-app?branch=develop)
 [![Code Climate](https://codeclimate.com/github/andela-oawofadeju/fly-app/badges/gpa.svg?maxAge=0)](https://codeclimate.com/github/andela-oawofadeju/fly-app)
 
+#### The above CI links are no longer available but will leave them there for historical/legacy purpose
+
 ## Description
 
-Fly_App is a web application for booking flight reservations. It provides services for passengers to book flights to 
+Flight-Booking is a web application for booking flight reservations. It provides services for passengers to book flights to 
 their respective destinations and make payments to that effect.
 
 ## Features
@@ -15,8 +17,12 @@ This app enebles you to search for already registered flights and book the fligh
 
 ## Dependencies
 
-This project is implemented using the ruby on rails framework and as such in order to effectively run this project locally, you need to have the version 5 or higher of Rails running on your local development machine. You also need to have at least Ruby 2.4.0 installed to have an awesome experience of the app, as rails is written in ruby.
+This project is implemented using the ruby on rails framework and as such in order to effectively run this project locally, you need to have the version 6 or higher of Rails running on your local development machine. You also need to have at least Ruby 2.3.0 installed to have an awesome experience of the app, as rails is written in ruby.
 
+
+### Flights
+
+![Alt text](/image/avail_flights.png?raw=true "Book your flights here")
 
 You also need to make sure that you have Rubygems and Bundler installed. RubyGems is a package management framework for Ruby and bundler is a ruby gem that helps to manage other external dependencies in a rails application.
 
@@ -51,6 +57,10 @@ or
 rails server
 ```
 
+### Page displaying flights for booking
+
+![Alt text](/image/book_flights.png?raw=true "Book your flights here")
+
 ## Running the tests.
 
 After all the setting up as mentioned above, you can run the tests. The tests are driven by rspec. You can get them fired up by running the following command from the terminal.
@@ -61,14 +71,3 @@ or
 ```
 bundle exec rspec
 ```
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/andela-oawofadeju/fly-app. This project is intended to be a safe and welcoming space for collaboration. To contribute to this work:
-
-1. Fork it ( https://github.com/andela-oawofadeju/fly-app/fork )
-2. Create your feature branch (`git checkout -b new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin new-feature`)
-5. Create a new Pull Request
-6. Wait
